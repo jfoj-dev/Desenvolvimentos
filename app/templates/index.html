@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Detector de Fraude</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <h1>Detector de Fraude - TCC Datascience & Analytics (USP ESALQ)</h1>
+    <form action="/detect_fraud" method="post">
+        <div class="input-group">
+            <label for="feature1">Tempo:</label>
+            <input type="number" step="0.01" name="feature1" required>
+        </div>
+
+        <div class="input-group">  
+            <label for="feature2">V1:</label>  
+            <input type="number" step="0.01" name="feature2" required>
+        </div>
+
+        <div class="input-group">
+            <label for="feature3">V2:</label>
+            <input type="number" step="0.01" name="feature3" required>
+        </div>
+
+        <div class="input-group">
+            <label for="feature4">V3:</label>
+            <input type="number" step="0.01" name="feature4" required>
+        </div>
+
+        <div class="input-group">
+            <label for="feature5">V4:</label>
+            <input type="number" step="0.01" name="feature5" required>
+        </div>
+
+        <div class="input-group">
+        <label for="feature6">V5:</label>
+        <input type="number" step="0.01" name="feature6" required>
+        </div>
+
+        <div class="input-group">
+        <label for="feature7">V6:</label>
+        <input type="number" step="0.01" name="feature7" required>
+        </div>
+
+        <div class="input-group">
+        <label for="feature8">V7:</label>
+        <input type="number" step="0.01" name="feature8" required>
+        </div>    
+
+        <div class="input-group">
+        <label for="feature9">V8:</label>
+        <input type="number" step="0.01" name="feature9" required>
+        </div>    
+
+        <div class="input-group">
+        <label for="feature10">V9:</label>
+        <input type="number" step="0.01" name="feature10" required>
+        </div>    
+
+        <div class="input-group">
+        <label for="featur11">V10:</label>
+        <input type="number" step="0.01" name="feature11" required>
+        </div>    
+
+        <div class="input-group">
+        <label for="feature12">V11:</label>
+        <input type="number" step="0.01" name="feature12" required>
+        </div>
+
+        <div class="input-group">
+        <label for="feature13">V12:</label>
+        <input type="number" step="0.01" name="feature13" required>
+        </div>    
+
+        <div class="input-group">
+        <label for="feature14">V13:</label>
+        <input type="number" step="0.01" name="feature14" required>
+        </div>
+
+        <div class="input-group">
+        <label for="feature15">V14:</label>
+        <input type="number" step="0.01" name="feature15" required>
+        </div>    
+
+        <div class="input-group">
+        <label for="feature16">V15:</label>
+        <input type="number" step="0.01" name="feature16" required>
+        </div>    
+
+        <div class="input-group">
+        <label for="feature17">V16:</label>
+        <input type="number" step="0.01" name="feature17" required>
+        </div>    
+
+        <div class="input-group">
+        <label for="feature18">V17:</label>
+        <input type="number" step="0.01" name="feature18" required>
+        </div>    
+
+        <div class="input-group">
+        <label for="feature19">V18:</label>
+        <input type="number" step="0.01" name="feature19" required>
+        </div>    
+
+        <div class="input-group">
+        <label for="feature20">V19:</label>
+        <input type="number" step="0.01" name="feature20" required>
+        </div>    
+
+        <div class="input-group">
+        <label for="feature22">V20:</label>
+        <input type="number" step="0.01" name="feature21" required>
+        </div>
+
+        <div class="input-group">
+        <label for="feature22">V21:</label>
+        <input type="number" step="0.01" name="feature22" required>
+        </div>
+
+        <div class="input-group">
+        <label for="feature23">V22:</label>
+        <input type="number" step="0.01" name="feature23" required>
+        </div>
+
+        <div class="input-group">
+        <label for="feature24">V23:</label>
+        <input type="number" step="0.01" name="feature24" required>
+        </div>
+
+        <div class="input-group">
+        <label for="feature25">V24:</label>
+        <input type="number" step="0.01" name="feature25" required>
+        </div>
+
+        <div class="input-group">
+        <label for="feature26">V25:</label>
+        <input type="number" step="0.01" name="feature26" required>
+        </div>
+
+        <div class="input-group">
+        <label for="feature27">V26:</label>
+        <input type="number" step="0.01" name="feature27" required>
+        </div>
+
+        <div class="input-group">
+        <label for="feature28">V27:</label>
+        <input type="number" step="0.01" name="feature28" required>
+        </div>
+
+        <div class="input-group">
+        <label for="feature29">V28:</label>
+        <input type="number" step="0.01" name="feature29" required>
+        </div>
+
+        <div class="input-group">
+        <label for="feature30">Valor:</label>
+        <input type="number" step="0.01" name="feature30" required>
+        </div>
+        
+        <button type="submit">Detectar Fraude</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        // Código JavaScript para lidar com a resposta da detecção de fraude
+        document.querySelector('form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+
+            const response = await fetch('/detect_fraud', {
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await response.json();
+            document.getElementById('result').innerText = `Resultado: ${data.result}`;
+        });
+    </script>
+</body>
+</html>
